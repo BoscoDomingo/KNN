@@ -12,8 +12,6 @@
       -- Iris Versicolour
       -- Iris Virginica
 
-8. Missing Attribute Values: None
-
 Summary Statistics:
 	         Min  Max   Mean    SD   Class Correlation
    sepal length: 4.3  7.9   5.84  0.83    0.7826   
