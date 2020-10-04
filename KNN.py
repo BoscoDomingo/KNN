@@ -60,20 +60,16 @@ def knn_classify(data_iterable, number_of_neighbours):
         data_iterable: iterable of 4 features (not class) to use as input data
         number_of_neighbours: the number of nearest neighbours to check
     """
-
     iris_df = pd.read_csv(data_path, names=column_names)
     print(iris_df)
-    print(data_iterable, number_of_neighbours, iris_df.iloc[0])
     print(distance_between_vectors(data_iterable, iris_df.iloc[0][:-1]))
-    # Minimum distance will be sqrt(a**2, b**2, c**2, d**2)
-    # where a = f1 - x1, b = f2 - x2... where fn is each feature
-    # of the data, in order
 
     # THIS DOESN'T WORK BECAUSE I ONLY NEED THE FIRST 4 COLUMNS TO OPERATE
     # BUT HAVE TO KEEP THE CLASS IN ORDER TO CLASSIFY. MY DESIRED RESULT WOULD
     # BE A (150, 2) DF, WITH A COLUMN FOR DISTANCE AND THE OTHER THE CLASS OF
     # THE POINT FROM WHICH THE DISTANCE WAS CALCULATED. THIS IS WHERE I'M STUCK
-    distances_df = iris_df.apply(lambda row: distance_between_vectors(data_iterable, row[:-1]), axis=1)
+    distances_df = iris_df.apply(
+        lambda row: distance_between_vectors(data_iterable, row[:-1]), axis=1)
     print(distances_df)
 
     # Now we pick the class from the mode of the first number_of_neighbour
